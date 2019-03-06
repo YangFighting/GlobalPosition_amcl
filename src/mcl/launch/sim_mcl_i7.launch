@@ -1,0 +1,22 @@
+<!--
+-->
+<launch>
+
+<!---->
+  <param name="/use_sim_time" value="true"/>
+
+   
+  <!-- Map server -->
+  <arg name="map_file" default="/home/yang/map/lib/aisle_hall_karto.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!-- MCL -->
+  <include file="$(find mcl)/launch/only_mcl.launch"/>
+  
+  <!-- rviz -->
+  <node pkg="rviz" name="rviz" type="rviz" args="-d $(find mcl)/rviz/mcl_rviz.rviz" />
+
+<!--
+  <node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0.0 0.0 0.18 0 0.0 0.0 base_link laser 100"/>
+-->
+</launch>

@@ -1,0 +1,15 @@
+<!--
+-->
+<launch>
+
+  <!-- rosbag play -->
+  <arg name="bag_filename" default="aisle.bag"/>
+  <node name="rosbag_play" pkg="rosbag" type="play" output="screen"
+    args="-r 1 --clock --hz 10 $(arg bag_filename) "/>
+
+ <!-- global localization -->
+
+  <node name="global_localization" pkg="mcl" type="robot_global_localization" output="screen"/>
+ <!---->
+
+</launch>
